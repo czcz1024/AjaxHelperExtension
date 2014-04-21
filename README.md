@@ -19,6 +19,6 @@ this js fix it;
 @Ajax.RenderAction("AjaxLoad", "Test", new {id=1 }, new AjaxOptions { }, new {@class="test" })
 ```
 
-add a extension method to auto load ajax content 
+add an extension method to AjaxHelper for auto load ajax content 
 this will generate a div
 and in js,send a ajax request
