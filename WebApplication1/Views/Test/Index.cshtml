@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Ajax.BeginForm(new AjaxOptions {
+    OnBegin="beginPost"
+}))
+{
+    <input name="str" id="str" />
+    <input type="submit" />
+}
+
+@Ajax.ActionLink("go", "AjaxLoad","test",new{},new AjaxOptions{
+    UpdateTargetId="a,#b"
+})
+<div id="a"></div>
+<div id="b"></div>
+
+@Ajax.RenderAction("AjaxLoad", "Test", new {id=1 }, new AjaxOptions { 
+    LoadingElementId="loading",
+    OnBegin="console.log(1)",
+    OnSuccess="console.log(2)",
+    OnFailure="console.log(2.1)",
+    OnComplete="console.log(3)",
+    
+}, new {@class="test" })
+<div id="loading" style="display:none">...</div>
+@section scripts{
+    <script>
+        function beginPost() {
+            $("#str").val("2");
+        }
+    </script>
+}
